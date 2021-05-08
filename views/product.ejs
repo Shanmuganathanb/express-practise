@@ -1,0 +1,55 @@
+<%- include('includes/head.ejs') %>
+</head>
+<body>
+    <main>
+        <form class="product-form" action="/product" method="POST">
+            <h2>Add Product</h2>
+            <div class="form-control">
+                <div>
+                    <label for="product">Product</label>
+                    <input type="text" name="product" id="product">
+                </div>
+                <div>
+                    <label for="price">Price</label>
+                    <input type="text" name="price" id="price">
+                </div>
+                <div>
+                    <label for="discounted">Discounted Price</label>
+                    <input type="text" name="discounted" id="discounted">
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description">
+                </div>
+            </div>
+
+            <button class="btn" type="submit">Add Product</button>
+        </form>
+    </main>
+    <div class="product-view">
+        <h2>Product List</h2>
+        <% if (prods.length > 0) { %>
+            <div class="products-container">
+                <% for (let product of prods) { %>
+                    <div class="product-container">
+                        <div>
+                            Product Name : <span class="product-name"><%= product.product %></span>
+                        </div>
+                        <div>
+                            Price : <span class="price"><%= product.price %></span> 
+                        </div>
+                        <div>
+                            Discounted price : <span class="discounted-price"><%= product.discounted %></span>
+                        </div>
+                        <div>
+                            Description : <span class="description"><%= product.description %></span>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h4>No Products</h4>
+        <% } %>
+    </div>
+</body>
+</html>

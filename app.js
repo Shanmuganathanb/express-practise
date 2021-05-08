@@ -1,28 +1,24 @@
+const path = require('path');
+
 const express = require('express');
 const bodyParser = require('body-parser')
 
 const app = express();
 
-app.use(bodyParser.urlencoded());
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
-app.get('/',(req,res,next)=>{
-    res.send("<form action='/result' method='POST'><input type='number' step='any' name='radius'><button type='submit'>Submit</button></form>")
-})
-app.post('/',(req,res,next)=>{
-    const radius = parseInt(req.body.radius)
-    const result = 3.14 * radius * radius
-    res.send(`<h3>The Area is <span>${result}</span></h3>`)
-})
-const products = [
-    {title:'Prod 1', price: 20, dicounted: 5, description: 'Very good'},
-    {title:'Prod 1', price: 20, dicounted: 5, description: 'Very good'},
-    {title:'Prod 1', price: 20, dicounted: 5, description: 'Very good'}
-]
-app.get('/product',(req,res,next)=>{
-    res.write(`Title\t Price\t Discounted\t Description\n`)
-    products.forEach((product) =>{
-        res.write(`${product.title}\t ${product.price}\t ${product.dicounted}\t\t ${product.description}\n`)
-    })   
-    res.send();
-})
+const indexPage = require('./routes/index');
+const productPage = require('./routes/product');
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(path.join(__dirname,'public')));
+
+app.use('/product',productPage.routes);
+app.use(indexPage);
+
+app.use((req,res,next) =>{
+    res.status(404).render('404', {pageTitle: 'Page Not Found'});
+});
+
 app.listen(4000);

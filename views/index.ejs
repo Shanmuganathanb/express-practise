@@ -1,0 +1,16 @@
+<%- include('includes/head.ejs') %>
+</head>
+<body>
+    <% if(method_here === 'get') { %>
+        <div class="form-container">
+            <h4>You can enter the radius of a circle and get the area of it.</h4>
+            <form action='/' method='POST'>
+                <input type='number' step='any' name='radius' placeholder="Enter the radius">
+                <button type='submit'>Submit</button>
+            </form>
+        </div>
+    <% } else { %>
+        <h2>The result is <strong><em><%= result %></em></strong></h2>
+    <% } %>
+</body>
+</html>
