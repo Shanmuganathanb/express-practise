@@ -2,6 +2,7 @@
 </head>
 <body>
     <main>
+        <%- include('includes/navigation.ejs') %>
         <form class="product-form" action="/product" method="POST">
             <h2>Add Product</h2>
             <div class="form-control">
@@ -43,6 +44,17 @@
                         </div>
                         <div>
                             Description : <span class="description"><%= product.description %></span>
+                        </div>
+                        <div class="prod_actions">
+                            <a href="/product/edit?productId=<%= product.id %>&edit=true" class="btn">Update</a>
+                            <form action="/product/delete-product" method="POST">
+                                <input type="hidden" value="<%= product.id %>" name="productId">
+                                <button class="btn" type="submit">Delete</button>
+                            </form>
+                            <form action="/cart" method="post">
+                                <button class="btn" type="submit">Add to Cart</button>
+                                <input type="hidden" name="productId" value="<%= product.id %>">
+                            </form>
                         </div>
                     </div>
                 <% } %>

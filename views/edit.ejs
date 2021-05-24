@@ -1,0 +1,30 @@
+<%- include('includes/head.ejs') %>
+</head>
+<body>
+    <main>
+        <form class="product-form" action="/product" method="POST">
+            <h2>Add Product</h2>
+            <div class="form-control">
+                <div>
+                    <label for="product">Product</label>
+                    <input type="text" name="product" id="product" value="<%= product.product %>">
+                </div>
+                <div>
+                    <label for="price">Price</label>
+                    <input type="text" name="price" id="price" value="<%= product.price %>">
+                </div>
+                <div>
+                    <label for="discounted">Discounted Price</label>
+                    <input type="text" name="discounted" id="discounted" value="<%= product.discounted %>">
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description" value="<%= product.description %>">
+                </div>
+            </div>
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <button class="btn" type="submit">Update product</button>
+        </form>
+    </main>
+</body>
+</html>

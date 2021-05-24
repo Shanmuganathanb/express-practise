@@ -11,6 +11,9 @@ h2,h4{
     justify-content: center;
     margin:20px;
 }
+a{
+    text-decoration: none;
+}
 .form-container form{
     display:flex;
     align-items:center;
@@ -47,8 +50,7 @@ h2,h4{
     justify-content:center;
     margin:10px auto;
     padding:6px;
-    color:rgb(113, 60, 199);
-    cursor:pointer
+    cursor:pointer;
 }
 .product-form .form-control{
     display:flex;
@@ -91,4 +93,32 @@ h2,h4{
     color:rgb(100, 19, 230);
     font-size:18px;
     margin:0px 10px;
+}
+.main-header__nav{
+    background-color: blueviolet;
+}
+.main-header__item-list{
+    display:flex;
+    align-items: center;
+    justify-content:space-evenly;
+    list-style-type: none;
+}
+.main-header__item{
+    padding:5px;
+}
+.main-header__item a{
+    color:white;
+}
+.main-header__item a.active{
+    color:yellow;
+}
+.main-header__item:hover{
+    background-color: rgb(40, 33, 47);
+}
+
+.btn, .prod_actions a{
+    color:white;
+    background:blueviolet;
+    margin:auto 10px;
+    padding:6px;
 }
